@@ -91,7 +91,7 @@ const Footer = () => {
 // # STYLED COMPONENTS
 
 const Wrapper = styled.footer`
-	background-color: var(--clr-primary-2-1);
+	background-color: var(--clr-neutral-4);
 	padding: 2rem 0;
 
 	.section-center {

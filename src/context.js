@@ -6,9 +6,22 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
 	// # STATE VALUES
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	// # FUNCTIONS AND SIDE EFFECTS
+	const toggleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
+	};
 	// # RETs
-	return <AppContext.Provider value={"hello"}>{children}</AppContext.Provider>;
+	return (
+		<AppContext.Provider
+			value={{
+				isMenuOpen,
+				toggleMenu,
+			}}
+		>
+			{children}
+		</AppContext.Provider>
+	);
 };
 
 // # CUSTOM HOOK (MUST USE)

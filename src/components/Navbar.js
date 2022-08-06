@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import { FaBars } from "react-icons/fa";
+import { useGlobalContext } from "../context";
 
+// # MAIN COMP..
 const Navbar = () => {
+	// # STATE VALUES
+	const { toggleMenu, isMenuOpen } = useGlobalContext();
+	// # FUNCTIONS AND SIDE EFFECTS
+	// # RETs
 	return (
 		<Wrapper>
 			<div className="nav-center">
@@ -11,25 +17,27 @@ const Navbar = () => {
 					<Logo className="logo" />
 				</div>
 
-				<div className="links-container">
-					<ul className="nav-links">
-						<li>
-							<a href="#">Features</a>
-						</li>
-						<li>
-							<a href="#">Pricing</a>
-						</li>
-						<li>
-							<a href="#">Resources</a>
-						</li>
-					</ul>
-					<div className="nav-btns">
-						<button className="login-btn">Login</button>
-						<button className="signup-btn">Sign up</button>
+				<div className={`nav-cont ${isMenuOpen && "active"}`}>
+					<div className="nav-cont-center">
+						<ul className="nav-links">
+							<li>
+								<a href="#">Features</a>
+							</li>
+							<li>
+								<a href="#">Pricing</a>
+							</li>
+							<li>
+								<a href="#">Resources</a>
+							</li>
+						</ul>
+						<div className="nav-btns">
+							<button className="login-btn">Login</button>
+							<button className="signup-btn">Sign up</button>
+						</div>
 					</div>
 				</div>
 
-				<button className="bars">
+				<button className="bars" onClick={toggleMenu}>
 					<FaBars />
 				</button>
 			</div>
@@ -62,9 +70,87 @@ const Wrapper = styled.nav`
 			height: fit-content;
 		}
 
-		.links-container {
+		.nav-cont {
+			/* border: 1px solid black; */
 			visibility: hidden;
+			padding: 0 1rem;
 			position: absolute;
+			top: 50px;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			/* visibility: hidden; */
+			/* transform: translate(-50%, -50%); */
+
+			.nav-cont-center {
+				/* border: 1px solid black; */
+				background-color: var(--clr-primary-2);
+				border-radius: 11px;
+				padding: 1.5rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 80%;
+				.nav-links {
+					width: 90%;
+					padding-bottom: 1.2rem;
+					display: grid;
+					grid-template-columns: 1fr;
+					grid-template-rows: repeat(3, 1fr);
+					grid-gap: 1.5em;
+					place-items: center;
+					border-bottom: 1px solid var(--clr-neutral-1);
+
+					li {
+						a {
+							color: white;
+						}
+						a:hover {
+							color: var(--clr-primary-1);
+						}
+					}
+				}
+
+				.nav-btns {
+					/* border: 1px dotted var(--clr-neutral-1); */
+					width: 80%;
+					margin-top: 20px;
+					display: grid;
+					grid-template-rows: repeat(2, 1fr);
+
+					.login-btn {
+						color: white;
+						font-size: 1.2rem;
+						background: transparent;
+						border: transparent;
+						text-align: center;
+						margin-bottom: 18px;
+						cursor: pointer;
+					}
+
+					.signup-btn {
+						background-color: var(--clr-primary-1);
+						border: transparent;
+						border-radius: 15px;
+						color: white;
+						font-size: 1rem;
+						font-weight: 700;
+						text-align: center;
+						padding: 0.5rem 0.75rem;
+						cursor: pointer;
+						transition: background-color 0.3s linear;
+					}
+
+					.signup-btn:hover {
+						background-color: var(--clr-prim-hover);
+					}
+				}
+			}
+		}
+		.active {
+			visibility: visible;
 		}
 
 		.bars {
