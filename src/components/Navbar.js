@@ -3,12 +3,21 @@ import styled from "styled-components";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import { FaBars } from "react-icons/fa";
 import { useGlobalContext } from "../context";
+import { motion } from "framer-motion";
 
 // # MAIN COMP..
 const Navbar = () => {
 	// # STATE VALUES
-	const { toggleMenu, isMenuOpen } = useGlobalContext();
+	const hiddenVal = -400;
+	const [pos, setPos] = useState(hiddenVal);
 	// # FUNCTIONS AND SIDE EFFECTS
+	const toggle = () => {
+		if (pos === hiddenVal) {
+			setPos(0);
+		} else {
+			setPos(hiddenVal);
+		}
+	};
 	// # RETs
 	return (
 		<Wrapper>
@@ -17,7 +26,11 @@ const Navbar = () => {
 					<Logo className="logo" />
 				</div>
 
-				<div className={`nav-cont ${isMenuOpen && "active"}`}>
+				<motion.div
+					className="nav-cont"
+					initial={false}
+					animate={{ y: pos }}
+				>
 					<div className="nav-cont-center">
 						<ul className="nav-links">
 							<li>
@@ -35,9 +48,9 @@ const Navbar = () => {
 							<button className="signup-btn">Sign up</button>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 
-				<button className="bars" onClick={toggleMenu}>
+				<button className="bars" onClick={toggle}>
 					<FaBars />
 				</button>
 			</div>
@@ -72,7 +85,6 @@ const Wrapper = styled.nav`
 
 		.nav-cont {
 			/* border: 1px solid black; */
-			visibility: hidden;
 			padding: 0 1rem;
 			position: absolute;
 			top: 50px;
@@ -80,8 +92,6 @@ const Wrapper = styled.nav`
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			/* visibility: hidden; */
-			/* transform: translate(-50%, -50%); */
 
 			.nav-cont-center {
 				/* border: 1px solid black; */
