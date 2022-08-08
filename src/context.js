@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 const AppContext = React.createContext();
 
 // # MAIN COMP..
-
 const AppProvider = ({ children }) => {
 	// # STATE VALUES
 	const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -139,6 +139,9 @@ const Wrapper = styled.nav`
 						margin-bottom: 18px;
 						cursor: pointer;
 					}
+					.login-btn:hover {
+						color: var(--clr-primary-1);
+					}
 
 					.signup-btn {
 						background-color: var(--clr-primary-1);
@@ -159,9 +162,6 @@ const Wrapper = styled.nav`
 				}
 			}
 		}
-		.active {
-			visibility: visible;
-		}
 
 		.bars {
 			height: fit-content;
@@ -170,88 +170,79 @@ const Wrapper = styled.nav`
 			font-size: 1.5rem;
 			color: var(--clr-neutral-1);
 			cursor: pointer;
+
+			@media screen and (min-width: 750px) {
+				display: none;
+			}
 		}
 		.bars:hover {
 			color: var(--clr-neutral-3);
 		}
-	}
 
-	@media screen and (min-width: 680px) {
-		/* border: 1px solid black;
-	padding: 1.5rem 0.7rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+		@media screen and (min-width: 750px) {
+			/* border: 1px solid black; */
+			width: 80%;
 
-	.nav-center {
-		position: relative;
-		border: 1px solid black;
-		display: flex;
-		align-items: center;
-		width: 80%;
-
-		.logo {
-			height: fit-content;
-		}
-		div {
-			border: 1px solid black;
-			height: fit-content;
-		}
-
-		.links-container {
-			visibility: vis;
-			margin-left: 40px;
-			width: 30%;
-			.nav-links {
-				border: 1px solid black;
-				display: flex;
+			.nav-cont {
+				top: 400px;
+				right: 0;
+				width: 80%;
+				height: 100%;
 				justify-content: space-between;
+				/* border: 1px solid black; */
+				padding: 0;
 
-				a {
-					color: var(--clr-neutral-1);
-					font-weight: var(--fweight-bold);
-					font-size: 14px;
-				}
-				a:hover {
-					color: var(--clr-neutral-3);
+				.nav-cont-center {
+					width: 100%;
+					/* border: 1px solid black; */
+					padding: 0;
+					background: none;
+					justify-content: space-between;
+					align-items: center;
+					flex-direction: row;
+
+					.nav-links {
+						/* border: 1px solid black; */
+						padding: 0;
+						display: flex;
+						width: fit-content;
+						height: fit-content;
+						border-bottom: none;
+						li {
+							a {
+								color: var(--clr-neutral-1);
+							}
+							a:hover {
+								color: var(--clr-neutral-3);
+							}
+						}
+					}
+
+					.nav-btns {
+						/* border: 1px solid black; */
+						width: fit-content;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						margin-top: 0;
+
+						.login-btn {
+							margin-right: 40px;
+							margin-bottom: 0;
+							color: var(--clr-neutral-1);
+						}
+						.login-btn:hover {
+							color: var(--clr-neutral-3);
+						}
+
+						.signup-btn {
+							font-size: 1rem;
+							padding: 0.4rem 0.7rem;
+						}
+					}
 				}
 			}
 		}
-
-		.nav-btns {
-			display: flex;
-			justify-content: space-between;
-			position: absolute;
-			right: 20px;
-
-			.login-btn {
-				background: transparent;
-				border: transparent;
-				color: var(--clr-neutral-1);
-				font-weight: var(--fweight-bold);
-				cursor: pointer;
-				font-size: 1.2rem;
-				margin-right: 20px;
-			}
-			.login-btn:hover {
-				color: var(--clr-neutral-3);
-			}
-
-			.signup-btn {
-				text-transform: capitalize;
-				background-color: var(--clr-primary-1);
-				padding: 0.4rem 1rem;
-				border-radius: 2rem;
-				border: transparent;
-				font-size: 1.3rem;
-				color: white;
-				font-weight: var(--fweight-bold);
-				cursor: pointer;
-			}
-		}
-
-		
-	} */
 	}
 `;
 export default Navbar;

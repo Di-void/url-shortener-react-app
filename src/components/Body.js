@@ -5,7 +5,11 @@ import Detrec from "../images/icon-detailed-records.svg";
 import Fullcust from "../images/icon-fully-customizable.svg";
 import Boost from "../images/bg-boost-mobile.svg";
 
+// # MAIN COMP..
 const Body = () => {
+	// # STATE VALUES
+	// # FUNCTIONS AND SIDE EFFECTS
+	// # RETs
 	return (
 		<Wrapper>
 			<div className="section-center">
@@ -22,7 +26,7 @@ const Body = () => {
 				<main>
 					<div className="items">
 						<div className="clipped">&nbsp;</div>
-						<div className="info-box">
+						<div className="info-box box-1">
 							<div className="icon">
 								<div className="icon-box">
 									{/* ICON */}
@@ -42,7 +46,7 @@ const Body = () => {
 							</article>
 						</div>
 
-						<div className="info-box">
+						<div className="info-box box-2">
 							<div className="icon">
 								{/* <div className="divider">&nbsp;</div> */}
 								<div className="icon-box">
@@ -63,7 +67,7 @@ const Body = () => {
 							</article>
 						</div>
 
-						<div className="info-box">
+						<div className="info-box box-3">
 							<div className="icon">
 								{/* <div className="divider">&nbsp;</div> */}
 								<div className="icon-box">
@@ -128,6 +132,11 @@ const Wrapper = styled.section`
 				text-align: center;
 				color: var(--clr-neutral-2);
 			}
+
+			@media screen and (min-width: 750px) {
+				width: 50%;
+				margin: 0 auto;
+			}
 		}
 
 		main {
@@ -136,7 +145,6 @@ const Wrapper = styled.section`
 			padding-bottom: 5rem;
 
 			.items {
-				/* background-color: var(--clr-primary-1); */
 				/* border: 1px solid black; */
 				position: relative;
 				display: grid;
@@ -152,6 +160,12 @@ const Wrapper = styled.section`
 					width: 5px;
 					height: 90%;
 					background-color: var(--clr-primary-1);
+
+					@media screen and (min-width: 750px) {
+						top: 11rem;
+						height: 5px;
+						width: 90%;
+					}
 					/* clip-path: inset(5% 50% 15% 49%); */
 				}
 				.info-box {
@@ -170,8 +184,12 @@ const Wrapper = styled.section`
 						position: absolute;
 						top: -40px;
 
+						@media (min-width: 750px) {
+							padding-left: 10%;
+							justify-content: left;
+						}
+
 						.icon-box {
-							position: relative;
 							border-radius: 50%;
 							display: flex;
 							justify-content: center;
@@ -186,6 +204,10 @@ const Wrapper = styled.section`
 						color: var(--clr-neutral-3);
 						margin-top: 40px;
 						margin-bottom: 20px;
+						@media (min-width: 750px) {
+							padding-left: 10%;
+							text-align: left;
+						}
 					}
 
 					.info-body {
@@ -196,9 +218,40 @@ const Wrapper = styled.section`
 							width: 80%;
 							text-align: center;
 							color: var(--clr-neutral-2);
+
+							@media (min-width: 750px) {
+								text-align: left;
+							}
 						}
 					}
+
+					@media (min-width: 800px) {
+						width: 90%;
+					}
 				}
+				@media screen and (min-width: 750px) {
+					/* padding: 0 2rem; */
+					/* border: 1px solid black; */
+					grid-template-columns: repeat(3, 1fr);
+					grid-template-rows: 1fr;
+					grid-gap: 1em;
+
+					.box-1 {
+						margin-top: 30px;
+					}
+					.box-2 {
+						margin-top: 80px;
+					}
+					.box-3 {
+						margin-top: 120px;
+					}
+				}
+			}
+
+			@media (min-width: 750px) {
+				width: 85vw;
+				margin: 0 auto;
+				height: fit-content;
 			}
 		}
 

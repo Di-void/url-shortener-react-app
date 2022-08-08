@@ -95,13 +95,19 @@ const Wrapper = styled.footer`
 	padding: 2rem 0;
 
 	.section-center {
+		/* border: 1px solid white; */
 		color: white;
 
+		@media screen and (min-width: 690px) {
+			display: grid;
+			grid-template-columns: 30% 90%;
+		}
 		a {
 			color: white;
 		}
 
 		.section-header {
+			/* border: 1px solid white; */
 			margin-bottom: 20px;
 			h1 {
 				text-align: center;
@@ -109,11 +115,18 @@ const Wrapper = styled.footer`
 		}
 
 		.body {
+			/* border: 1px solid white; */
 			display: grid;
 			grid-template-columns: 1fr;
 			grid-template-rows: repeat(3, 1fr);
 			justify-items: center;
 			grid-row-gap: 1em;
+
+			@media screen and (min-width: 690px) {
+				width: 70%;
+				grid-template-columns: repeat(4, 1fr);
+				grid-template-rows: 1fr;
+			}
 
 			.subsection {
 				/* border: 1px solid white; */
@@ -122,6 +135,9 @@ const Wrapper = styled.footer`
 					margin-bottom: 10px;
 					h3 {
 						text-align: center;
+						@media (min-width: 690px) {
+							text-align: left;
+						}
 					}
 				}
 
@@ -129,6 +145,10 @@ const Wrapper = styled.footer`
 					li {
 						text-align: center;
 						margin-bottom: 9px;
+
+						@media screen and (min-width: 690px) {
+							text-align: left;
+						}
 
 						a {
 							font-size: 0.8rem;
@@ -148,6 +168,12 @@ const Wrapper = styled.footer`
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+
+				@media (min-width: 690px) {
+					width: 100%;
+					margin-top: 0;
+					align-items: flex-start;
+				}
 
 				button {
 					cursor: pointer;
