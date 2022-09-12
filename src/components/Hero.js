@@ -2,8 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "../assets/images/illustration-working.svg";
 import Logo1 from "../assets/images/bg-shorten-mobile.svg";
+import { useGlobalContext } from "../context";
 
 const Hero = () => {
+  // # STATE VALUES
+  const { shortenLink, error, refContainer, getStarted } = useGlobalContext();
+  // # FUNCTIONS AND SIDE EFFECTS
+  const handleSubmit = (e, link) => {
+    e.preventDefault();
+    shortenLink(link);
+  };
+  // # RETs
   return (
     <Wrapper>
       <header className="section-header">
@@ -23,7 +32,9 @@ const Hero = () => {
           </div>
 
           <div className="btn-bx">
-            <button className="start-btn">Get Started</button>
+            <button className="start-btn" onClick={getStarted}>
+              Get Started
+            </button>
           </div>
         </article>
       </header>
@@ -32,12 +43,22 @@ const Hero = () => {
         <div className="form-svg">
           <img src={Logo1} alt="" />
         </div>
-        <form className="form">
+        <form
+          className="form"
+          onSubmit={(e) => handleSubmit(e, refContainer.current.value)}
+        >
           <input
             type="text"
-            className="link-input"
+            className={`link-input ${error.show && "link-error"}`}
             placeholder="Shorten a link here..."
+            ref={refContainer}
           />
+          {error.show && (
+            <p className="error">
+              <i>{error.msg}</i>
+            </p>
+          )}
+
           <button type="submit">Shorten it!</button>
         </form>
       </div>
@@ -133,10 +154,11 @@ const Wrapper = styled.section`
     }
     .form {
       /* border: 1px solid black; */
+      position: relative;
       padding: 1.5rem;
       display: grid;
       grid-template-rows: repeat(2, 1fr);
-      gap: 1em;
+      gap: 1.6em;
 
       button {
         color: white;
@@ -162,6 +184,30 @@ const Wrapper = styled.section`
         z-index: 1;
         border-radius: 0.4em;
         padding: 1rem;
+      }
+
+      .link-error {
+        outline: 2.4px solid red;
+      }
+
+      .error {
+        /* border: 1px solid white; */
+        padding: 0;
+        color: red;
+        position: absolute;
+        top: 75px;
+        left: 30px;
+        animation: blink-animation 1s steps(5, start) infinite;
+
+        @media screen and (max-width: 380px) {
+          font-size: 15px;
+        }
+      }
+
+      @keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
       }
     }
 

@@ -1,45 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Brandrecog from "../assets/images/icon-brand-recognition.svg";
 import Detrec from "../assets/images/icon-detailed-records.svg";
 import Fullcust from "../assets/images/icon-fully-customizable.svg";
 import Boost from "../assets/images/bg-boost-mobile.svg";
+import SingleLink from "./SingleLink";
+import { useGlobalContext } from "../context";
 
 // # MAIN COMP..
 const Body = () => {
   // # STATE VALUES
-  const [test, setTest] = useState(false);
+  const { links, getStarted } = useGlobalContext();
   // # FUNCTIONS AND SIDE EFFECTS
   // # RETs
   return (
     <Wrapper>
       <div className="section-center">
         <section className="links-container">
-          <article className="link-box">
-            <div className="title">
-              <h2>https://www.frontendmentor.io</h2>
-            </div>
-            <div className="short-link-box">
-              <h2>https://rel.ink/k4IKyk</h2>
-
-              <button
-                className={`copy-btn ${test && "active"}`}
-                onClick={() => setTest(!test)}
-              >
-                {test ? "Copied!" : "Copy"}
-              </button>
-            </div>
-          </article>
-          <article className="link-box">
-            <div className="title">
-              <h2>https://www.frontendmentor.io</h2>
-            </div>
-            <div className="short-link-box">
-              <h2>https://rel.ink/k4IKyk</h2>
-
-              <button className="copy-btn">Copy</button>
-            </div>
-          </article>
+          {links.map((item, index) => {
+            // const { full_short_link2, original_link } = item;
+            return <SingleLink {...item} key={index} />;
+          })}
         </section>
 
         <header>
@@ -128,7 +109,9 @@ const Body = () => {
             </div>
 
             <div className="btn-bx">
-              <button className="start-btn">Get Started</button>
+              <button className="start-btn" onClick={getStarted}>
+                Get Started
+              </button>
             </div>
           </div>
         </div>
