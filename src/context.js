@@ -49,13 +49,13 @@ const AppProvider = ({ children }) => {
           let newLinks = [...oldLinks, newLink].slice(0).reverse();
           if (newLinks.length > 3) {
             newLinks = newLinks.slice(0, 3);
+            saveToLocal(newLinks);
             return newLinks;
           }
+          saveToLocal(newLinks);
           return newLinks;
         });
-        saveToLocal(links);
         setIsLoading(false);
-        refContainer.current.value = "";
         setError({ ...error, show: false, msg: "" });
         // console.log(response);
       }
@@ -66,11 +66,9 @@ const AppProvider = ({ children }) => {
           show: true,
           msg: "The URL provided is not valid",
         });
-        refContainer.current.value = query;
         setIsLoading(false);
         console.log(error);
       } else {
-        refContainer.current.value = query;
         setIsLoading(false);
         setError({
           ...error,
