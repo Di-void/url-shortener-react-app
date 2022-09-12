@@ -70,6 +70,7 @@ const AppProvider = ({ children }) => {
         setIsLoading(false);
         console.log(error);
       } else {
+        refContainer.current.value = query;
         setIsLoading(false);
         setError({
           ...error,
