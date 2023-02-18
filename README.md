@@ -57,7 +57,7 @@ I plan to continue developing and improving the error handling of the applicatio
 
 ## Author
 
-- Github - [Multimarix](https://github.com/Multimarix)
+- Github - [Di-void](https://github.com/Di-void)
 - Frontend Mentor - [@Multimarix](https://www.frontendmentor.io/profile/Multimarix)
 - LinkedIN - [Don Akhirebhulu](https://www.linkedin.com/in/don-akhirebhulu-675082242/)
 
